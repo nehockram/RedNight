@@ -6,9 +6,9 @@ $(document).ready(function () {
     //  alert("Document ready");
 
 
-    $("#diver").swipe(function () {
+    $("#diver").on("swipe", (function () {
         speakTime();
-    });
+    }));
 
     $("#diver").tap(function () {
         changeColor();
@@ -37,13 +37,14 @@ $(document).ready(function () {
 
     function speakTime() {
         var curTime = new Date();
-        console.log(curTime.toLocaleTimeString());
-        var hour = curTime.toLocaleTimeString();
-        //var minutes = curTime.getMinutes();
+
+        var time = curTime.toLocaleTimeString();
+
+        console.log("It is " + time);
         var msg = new SpeechSynthesisUtterance();
         msg.lang = 'en-US';
         msg.rate = .8;
-        msg.text = "It is " + hour;
+        msg.text = "It is " + time;
 
         window.speechSynthesis.speak(msg);
         // alert(curTime.toLocaleTimeString());
