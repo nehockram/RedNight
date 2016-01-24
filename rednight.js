@@ -5,8 +5,12 @@ $(document).ready(function () {
     var curBkgc = "light-red";
     //  alert("Document ready");
 
-    $("#diver").click(function () {
 
+    $("#diver").swipe(function () {
+        speakTime();
+    });
+
+    $("#diver").dblclick(function () {
         changeColor();
     });
 
@@ -29,6 +33,20 @@ $(document).ready(function () {
         }
 
 
+    }
+
+    function speakTime() {
+        var curTime = new Date();
+        console.log(curTime.toLocaleTimeString());
+        var hour = curTime.toLocaleTimeString();
+        //var minutes = curTime.getMinutes();
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'en-US';
+        msg.rate = .8;
+        msg.text = "It is " + hour;
+
+        window.speechSynthesis.speak(msg);
+        // alert(curTime.toLocaleTimeString());
     }
 
 
