@@ -10,7 +10,7 @@ $(document).ready(function () {
         speakTime();
     });
 
-    $("#diver").dblclick(function () {
+    $("#diver").tap(function () {
         changeColor();
     });
 
